@@ -1,0 +1,92 @@
+
+http://localhost:3000/
+
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "login": "testadmin@test.com",
+  "password": "testadmin"
+}
+
+###
+
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjAsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNzA3Njk1LCJ1dWlkIjoiM2QxOTk5MjAtMmEzZS00NjRmLTg5NGQtZTg2MDFiNWYwNmNjIn0.ccZCrfVPcYtP9BV6o8avTTb-2nVGG89yKDWG4TVrgoM
+
+###
+
+GET http://localhost:3000/users/e040d26c-8a4c-42fc-830e-99cec1f4b2e8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjAsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNjIyMDMxLCJ1dWlkIjoiMmEzMDBlNTctNTk0Yi00ZGRlLWJlYzYtYTc5MDU4NDliZDk3In0.XLYenBxPyrdUATHDwJzZHE78ACGQEjHomo0kpVggGY4
+
+###
+
+POST http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjAsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNjgxMjM2LCJ1dWlkIjoiMWZhM2U4ZjYtZWM3Yy00ZDFlLWJhMDgtMTc2NzdlZTRiOTE4In0.khNodXjCEgTAe0CBHY0IeV4LO-t22kfWRveTOrR1_tw
+Content-Type: application/json
+
+{
+  "first_name": "testuser6",
+  "last_name": "testuser6",
+  "email": "ttt6@test.com",
+  "password": "testuser6",
+  "date_of_birth": "2000-01-01T00:00:00.000Z",
+  "access_level": 1
+}
+
+###
+
+PUT http://localhost:3000/users/655766b2-dc8d-4ea1-8f11-1b029f8c13e9
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjAsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNzA3Njk1LCJ1dWlkIjoiM2QxOTk5MjAtMmEzZS00NjRmLTg5NGQtZTg2MDFiNWYwNmNjIn0.ccZCrfVPcYtP9BV6o8avTTb-2nVGG89yKDWG4TVrgoM
+Content-Type: application/json
+
+{
+  "first_name": "test00",
+  "last_name": "test00",
+  "email": "test00@test.com",
+  "password": "test00",
+  "date_of_birth": "2000-01-01T00:00:00.000Zdadadada"
+}
+
+###
+
+DELETE http://localhost:3000/users/e040d26c-8a4c-42fc-830e-99cec1f4b2e8
+
+
+###
+
+GET http://localhost:3000/votes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjAsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNzA3Njk1LCJ1dWlkIjoiM2QxOTk5MjAtMmEzZS00NjRmLTg5NGQtZTg2MDFiNWYwNmNjIn0.ccZCrfVPcYtP9BV6o8avTTb-2nVGG89yKDWG4TVrgoM
+
+###
+
+POST http://localhost:3000/votes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjAsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNjk2NjU3LCJ1dWlkIjoiMWZhM2U4ZjYtZWM3Yy00ZDFlLWJhMDgtMTc2NzdlZTRiOTE4In0.YGHOmdbpKDiHsL7Sutk9LtL9scC2jxqs-m0Hakf5Jug
+Content-Type: application/json
+
+{
+  "title": "Test",
+  "description": "TEstetstetstdgdayzdjzahd,azd",
+  "start_date": "2004-01-01T00:00:00.000Z",
+  "end_date": "2004-02-01T00:00:00.000Z"
+}
+
+###
+
+PUT http://localhost:3000/votes/9a3080ed-4016-44d3-a5e4-67f73a5f7904
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjAsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNjk2NjU3LCJ1dWlkIjoiMWZhM2U4ZjYtZWM3Yy00ZDFlLWJhMDgtMTc2NzdlZTRiOTE4In0.YGHOmdbpKDiHsL7Sutk9LtL9scC2jxqs-m0Hakf5Jug
+Content-Type: application/json
+
+{
+  "start_date": "2004-01-01T00:00:00.000Z",
+  "end_date": "2004-04-01T00:00:00.000Z",
+  "uuid_votes": ["dzdzadad"]
+}
+
+###
+
+DELETE http://localhost:3000/votes/0774641a-0dd0-4d1b-abf3-6bb8e95a91cc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjEsImVtYWlsIjoidGVzdHVzZXIyQHRlc3QuY29tIiwiZXhwIjoxNTczNjk5OTg0LCJ1dWlkIjoiZmU4ZDU1MjYtYjExMi00OTQ2LWE4YjUtNGU2N2RiOGJlMTZmIn0.cpSoTIGl3_bLxcAAi_LtgvWDD2N3X3SjnjoxfhGL_po
+

@@ -1,0 +1,52 @@
+version: '3.1'
+
+services:
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+
+  db:
+    build: ./api/db
+    volumes:
+      - ./api/db/pgdata:/pgdata
+    environment:
+      POSTGRES_DB: "dev"
+      POSTGRES_PASSWORD: "s3cr3tp4ssw0rd"
+      POSTGRES_USER: "postgres-dev"
+      PGDATA: "/pgdata"
+    ports:
+      - 5432:5432
+  
+  app:
+    build:
+      context: ./api
+      args:
+        app_env: ${APP_ENV}
+    environment:
+      POSTGRES_DB: "dev"
+      POSTGRES_HOST: "db"
+      POSTGRES_PASSWORD: "s3cr3tp4ssw0rd"
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: "postgres-dev"
+    volumes:
+      - ./api:/go/src/github.com/lavaninho/Projet-GO
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+      - redis
+    links:
+      - db
+      - redis
+
+  client:
+    build: './client'
+    volumes:
+      - './client:/home/node/app'
+    working_dir: '/home/node/app'
+    command: 'yarn serve'
+    ports:
+      - 127.0.0.1:8080:8080
+      - 127.0.0.1:8000:8000

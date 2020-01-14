@@ -1,0 +1,122 @@
+
+### Test /
+http://localhost:3000/
+
+
+### Test admin login
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "login": "testadmin@test.com",
+  "password": "testadmin"
+}
+
+### Test user login
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "login": "testuser2@test.com",
+  "password": "testuser2"
+}
+
+### Test false login and rate limiter
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "login": "false@test.com",
+  "password": "false"
+}
+
+### Test protected routes
+
+GET http://localhost:3000/users
+
+### Test GET users
+
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjEsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNzEwMjYxLCJ1dWlkIjoiYWJkMTA0YzYtNzc1Yy00MDNiLWJjNDctYTMyZjcxMmRiYzE1In0.7Y6ejVa7cDTLsCHIQbZsGcMkRVD9z5GcdX5lV-51EBU
+
+### Test GET users/:id
+
+GET http://localhost:3000/users/b6e92e93-fddf-41bd-ba51-97dd4f91b509
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjEsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNzEwMjYxLCJ1dWlkIjoiYWJkMTA0YzYtNzc1Yy00MDNiLWJjNDctYTMyZjcxMmRiYzE1In0.7Y6ejVa7cDTLsCHIQbZsGcMkRVD9z5GcdX5lV-51EBU
+
+### Test create user
+
+POST http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjEsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNzEwMjk2LCJ1dWlkIjoiYWJkMTA0YzYtNzc1Yy00MDNiLWJjNDctYTMyZjcxMmRiYzE1In0.8sHnUDPhp5oJibwnDHmBiCxAM_OdLt5VdRRETrSrE4I
+Content-Type: application/json
+
+{
+  "first_name": "testuser7",
+  "last_name": "testuser7",
+  "email": "testuser7@test.com",
+  "password": "testuser7",
+  "date_of_birth": "2000-01-01T00:00:00.000Z",
+  "access_level": 1
+}
+
+### Test update user/:id
+PUT http://localhost:3000/users/b6e92e93-fddf-41bd-ba51-97dd4f91b509
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjEsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNzEwMjk2LCJ1dWlkIjoiYWJkMTA0YzYtNzc1Yy00MDNiLWJjNDctYTMyZjcxMmRiYzE1In0.8sHnUDPhp5oJibwnDHmBiCxAM_OdLt5VdRRETrSrE4I
+Content-Type: application/json
+
+{
+  "first_name": "test00",
+  "last_name": "test00",
+  "email": "test00@test.com",
+  "password": "test00",
+  "date_of_birth": "2004-01-01T00:00:00.000Zdadadada"
+}
+
+### Test delete user
+
+DELETE http://localhost:3000/users/a0de9c57-8e78-4404-b5da-01a98d8df1cc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjEsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNzEwMjk2LCJ1dWlkIjoiYWJkMTA0YzYtNzc1Yy00MDNiLWJjNDctYTMyZjcxMmRiYzE1In0.8sHnUDPhp5oJibwnDHmBiCxAM_OdLt5VdRRETrSrE4I
+
+### Test get votes
+
+###
+
+POST http://localhost:3000/votes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjEsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNzExNTM2LCJ1dWlkIjoiYWJkMTA0YzYtNzc1Yy00MDNiLWJjNDctYTMyZjcxMmRiYzE1In0.iEC0Gw6mNk0AWP_gNqTAEVMG89p0HUHjeYhWVWZGlKY
+Content-Type: application/json
+
+{
+  "title": "Test",
+  "description": "TEstetstetstdgdayzdjzahd,azd",
+  "start_date": "2004-01-01T00:00:00.000Z",
+  "end_date": "2004-02-01T00:00:00.000Z"
+}
+
+###
+
+POST http://localhost:3000/votes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjEsImVtYWlsIjoidGVzdGFkbWluQHRlc3QuY29tIiwiZXhwIjoxNTczNzExNTM2LCJ1dWlkIjoiYWJkMTA0YzYtNzc1Yy00MDNiLWJjNDctYTMyZjcxMmRiYzE1In0.iEC0Gw6mNk0AWP_gNqTAEVMG89p0HUHjeYhWVWZGlKY
+Content-Type: application/json
+
+{
+  "title": "Test",
+  "description": "TEstetstetstdgdayzdjzahd,azd",
+  "start_date": "2004-01-01T00:00:00.000Z",
+  "end_date": "2004-02-01T00:00:00.000Z"
+}
+
+###
+
+PUT http://localhost:3000/votes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NfbGV2ZWwiOjIsImVtYWlsIjoidGVzdHVzZXIyQHRlc3QuY29tIiwiZXhwIjoxNTczNzExNjU0LCJ1dWlkIjoiYjg2MWZiNjEtYzBlYS00NjU2LTk1MWItYTc3MTBjYTk0NDdiIn0.CusiYzr4wVmqMZQeHyJTazZY_Zmu09b2MV_1FwY7M0Q
+Content-Type: application/json
+
+{
+  "title": "Test",
+  "description": "TEstetstetstdgdayzdjzahd,azd",
+  "start_date": "2004-01-01T00:00:00.000Z",
+  "end_date": "2004-02-01T00:00:00.000Z"
+}

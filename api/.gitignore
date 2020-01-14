@@ -1,0 +1,13 @@
+.idea
+
+.vscode
+
+gin-bin
+
+.env
+
+Projet-GO
+
+db/pgdata
+
+tmp
