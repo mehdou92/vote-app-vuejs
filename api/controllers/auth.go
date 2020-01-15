@@ -35,7 +35,7 @@ func Login(c *gin.Context) {
 			c.Abort()
 		}
 
-		c.JSON(http.StatusCreated, gin.H{"jwt": token})
+		c.JSON(http.StatusOK, gin.H{"jwt": token})
 	} else {
 		c.AbortWithError(http.StatusUnprocessableEntity, err)
 	}
