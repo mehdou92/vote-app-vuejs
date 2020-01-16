@@ -7,7 +7,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
 
-	"github.com/lavaninho/Projet-GO/models"
+	"github.com/mehdou92/vote-app-vuejs/api/models"
 )
 
 // CheckJwtToken check if jwt token is valid

@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/jinzhu/gorm"
-	"github.com/lavaninho/Projet-GO/config"
-	"github.com/lavaninho/Projet-GO/models"
-	"github.com/lavaninho/Projet-GO/routing"
+	"github.com/mehdou92/vote-app-vuejs/api/config"
+	"github.com/mehdou92/vote-app-vuejs/api/models"
+	"github.com/mehdou92/vote-app-vuejs/api/routing"
 )
 
 var db *gorm.DB

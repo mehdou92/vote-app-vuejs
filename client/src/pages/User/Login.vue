@@ -47,32 +47,17 @@ export default {
         login: values.login,
         password: values.password
       })
-        .then(response => {
-            console.log('response = ', response);
-          if (response.status === 200) {
-            console.log("status ok  login");
+        .then(async response => {
+          if (response.status === 200) {            
+            const data = await response.json();
+            store.commit('authenticate', data);
+            this.$router.push('/');
+            console.log('connected');
           }
         })
         .catch(response => {
-          console.log("error logged");
-          console.log('RESPONSE ERREUR : ', response);
+          console.log(response);
         });
-
-      //   axios
-      //     .post('/login', {
-      //       email: values.email,
-      //       password: values.password
-      //     })
-      //     .then(response => {
-      //       if (response.status === 200) {
-      //         store.commit('authenticate', response.data);
-      //         this.$router.push('/votes');
-      //         console.log('Logged !');
-      //       }
-      //     })
-      //     .catch(response => {
-      //       console.log(response);
-      //     });
     }
   }
 };

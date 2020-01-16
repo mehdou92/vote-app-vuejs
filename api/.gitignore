@@ -11,3 +11,5 @@ Projet-GO
 db/pgdata
 
 tmp
+
+vendor

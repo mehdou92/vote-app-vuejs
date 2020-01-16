@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 
-	"github.com/lavaninho/Projet-GO/models"
-	"github.com/lavaninho/Projet-GO/utils"
+	"github.com/mehdou92/vote-app-vuejs/api/models"
+	"github.com/mehdou92/vote-app-vuejs/api/utils"
 )
 
 // Login login handler
@@ -34,7 +34,6 @@ func Login(c *gin.Context) {
 			c.AbortWithError(http.StatusUnprocessableEntity, err)
 			c.Abort()
 		}
-
 		c.JSON(http.StatusOK, gin.H{"jwt": token})
 	} else {
 		c.AbortWithError(http.StatusUnprocessableEntity, err)

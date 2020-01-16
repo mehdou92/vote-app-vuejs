@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/lavaninho/Projet-GO/utils"
+	"github.com/mehdou92/vote-app-vuejs/api/utils"
 )
 
 // AccessLevel type

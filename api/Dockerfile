@@ -20,10 +20,11 @@ ARG app_env
 ENV APP_ENV $app_env
 
 # it is okay to leave user/GoDoRP as long as you do not want to share code with other libraries
-COPY . /go/src/github.com/lavaninho/Projet-GO
-WORKDIR /go/src/github.com/lavaninho/Projet-GO
+COPY . /go/src/github.com/mehdou92/vote-app-vuejs/api
+WORKDIR /go/src/github.com/mehdou92/vote-app-vuejs/api
 
 RUN apk add --no-cache git mercurial
+RUN ls
 RUN go get ./
 RUN go build
 

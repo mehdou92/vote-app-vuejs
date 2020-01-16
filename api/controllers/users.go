@@ -8,8 +8,8 @@ import (
 	"github.com/gofrs/uuid"
 	"github.com/jinzhu/gorm"
 
-	"github.com/lavaninho/Projet-GO/models"
-	"github.com/lavaninho/Projet-GO/utils"
+	"github.com/mehdou92/vote-app-vuejs/api/models"
+	"github.com/mehdou92/vote-app-vuejs/api/utils"
 )
 
 // Index index

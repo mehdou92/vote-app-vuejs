@@ -31,7 +31,7 @@ services:
       POSTGRES_PORT: 5432
       POSTGRES_USER: "postgres-dev"
     volumes:
-      - ./api:/go/src/github.com/lavaninho/Projet-GO
+      - ./api:/go/src/github.com/mehdou92/vote-app-vuejs/api
     ports:
       - 3000:3000
     depends_on:

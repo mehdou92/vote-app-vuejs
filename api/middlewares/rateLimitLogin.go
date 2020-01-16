@@ -5,7 +5,7 @@ import (
 	"github.com/ulule/limiter/v3"
 	mgin "github.com/ulule/limiter/v3/drivers/middleware/gin"
 
-	"github.com/lavaninho/Projet-GO/config"
+	"github.com/mehdou92/vote-app-vuejs/api/config"
 )
 
 // LoginLimiter Login rate limiter middleware

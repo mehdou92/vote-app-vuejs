@@ -12,13 +12,11 @@ const vuexPersist = new VuexPersist({
 export default new Vuex.Store({
   plugins: [vuexPersist.plugin],
   state: {
-    token: null,
-    accessLevel: 0
+    token: null
   },
   mutations: {
     authenticate(state, payload) {
-      state.token = payload.JWT;
-      state.accessLevel = payload.AccessLevel;
+      state.token = payload.jwt;
     }
   }
 });

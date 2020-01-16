@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gofrs/uuid"
 	"github.com/jinzhu/gorm"
-	"github.com/lavaninho/Projet-GO/models"
+	"github.com/mehdou92/vote-app-vuejs/api/models"
 )
 
 func index(c *gin.Context) {

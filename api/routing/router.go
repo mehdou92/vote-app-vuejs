@@ -5,9 +5,10 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lavaninho/Projet-GO/config"
-	"github.com/lavaninho/Projet-GO/controllers"
-	"github.com/lavaninho/Projet-GO/middlewares"
+	// "github.com/gin-contrib/cors"
+	"github.com/mehdou92/vote-app-vuejs/api/config"
+	"github.com/mehdou92/vote-app-vuejs/api/controllers"
+	"github.com/mehdou92/vote-app-vuejs/api/middlewares"
 )
 
 // InitializeRouter initialize router
@@ -21,6 +22,10 @@ func InitializeRouter() *gin.Engine {
 	if db == nil {
 		log.Fatal("DB Error")
 	}
+
+	// configCors := cors.DefaultConfig()
+	// configCors.AllowAllOrigins = true
+	// router.Use(cors.New(configCors))
 
 	router.Use(config.Inject(db))
 
