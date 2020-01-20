@@ -41,8 +41,6 @@ export default {
     handleSubmit({ event, values }) {
       event.preventDefault();
 
-      console.log('values login : ',values);
-
       login({
         login: values.login,
         password: values.password

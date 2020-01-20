@@ -26,3 +26,16 @@ export async function createUser(params){
   let data = await response;
   return data;
 }
+
+export async function getUsers(){
+  
+  let response = await fetch("http://localhost:3000/users/", {
+    method: "get",
+    headers: {
+      "Authorization" : 'Bearer ' + store.state.token,
+      "Content-type": "application/json"
+    }
+  });
+  let data = await response;
+  return data;
+}
