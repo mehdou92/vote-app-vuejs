@@ -39,3 +39,16 @@ export async function getUsers(){
   let data = await response;
   return data;
 }
+
+export async function getUser(userId){
+
+  let response = await fetch(`http://localhost:3000/users/${userId}`, {
+    method: "get",
+    headers: {
+      "Authorization" : 'Bearer ' + store.state.token,
+      "Content-type": "application/json"
+    }
+  });
+  let data = await response;
+  return data;
+}

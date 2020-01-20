@@ -3,7 +3,8 @@ import VueRouter from "vue-router";
 import Home from "../components/Home";
 import Login from "../pages/User/Login";
 import CreateUser from "../pages/User/CreateUser";
-import ListUser from "../pages/User/ListUser";
+import ListUsers from "../pages/User/ListUser";
+import User from "../pages/User/GetUser"; 
 
 const router = new VueRouter({
     mode: "history",
@@ -26,7 +27,12 @@ const router = new VueRouter({
         {
             path:'/list-users',
             name: 'List of users',
-            component: ListUser
+            component: ListUsers
+        },
+        {
+            path: '/user/:id',
+            name: 'Get user',
+            component: User
         }
     ]
 });
