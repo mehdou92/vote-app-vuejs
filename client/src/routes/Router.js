@@ -5,7 +5,9 @@ import Login from "../pages/User/Login";
 import CreateUser from "../pages/User/CreateUser";
 import ListUsers from "../pages/User/ListUser";
 import User from "../pages/User/GetUser";
-import CreateLaw from "../pages/Vote/AddVote.vue";
+import CreateLaw from "../pages/Vote/AddLaw";
+import ListLaws from "../pages/Vote/ListLaws";
+import Law from "../pages/Vote/GetLaw";
 
 const router = new VueRouter({
     mode: "history",
@@ -26,7 +28,7 @@ const router = new VueRouter({
             component: CreateUser
         },
         {
-            path:'/list-users',
+            path:'/users',
             name: 'List of users',
             component: ListUsers
         },
@@ -39,6 +41,16 @@ const router = new VueRouter({
             path: '/create-law',
             name: 'Create new law',
             component: CreateLaw
+        },
+        {
+            path: '/laws',
+            name: 'List of laws',
+            component: ListLaws
+        },
+        {
+            path: '/law/:id',
+            name: 'Get law',
+            component: Law
         }
     ]
 });

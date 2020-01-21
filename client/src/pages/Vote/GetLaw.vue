@@ -1,31 +1,32 @@
 <template>
-  <div class="users">
-    <h1>List of all user</h1>
+  <div class="law">
+    <h1>Get law</h1>
 
     <div v-if="loading" class="loading">Loading...</div>
 
     <div v-if="error" class="error">{{ error }}</div>
 
-    <div v-if="users">
-      <div v-for="user in users" :key="user.uuid" class="content">
-        <h2>{{ user.uuid }}</h2>
-        <p>{{ user.first_name }}</p>
-        <p>{{ user.last_name }}</p>
-        <p>{{ user.accessLevel }}</p>
+      <div v-if="law" class="content">
+        <h2>{{ law.uuid }}</h2>
+        <p>{{ law.title }}</p>
+        <p>{{ law.description }}</p>
+        <p>{{ law.start_date }}</p>
+        <p>{{ law.end_date }}</p>
       </div>
     </div>
-  </div>
+    
 </template>
 
 <script>
-import { getUsers } from "@/services/user.service";
+import { getLaw } from "@/services/vote.service";
 
 export default {
-  name: "ListUser",
+
+  name: "GetLaw",
   data() {
     return {
       loading: false,
-      users: null,
+      law: null,
       error: null
     };
   },
@@ -38,16 +39,15 @@ export default {
   },
   methods: {
     fetchData() {
-      this.error = this.users = null;
+      this.error = this.law = null;
       this.loading = true;
-      // replace `getUsers` with your data fetching util / API wrapper
-
-      getUsers()
+      // replace `getPost` with your data fetching util / API wrapper
+      getLaw(this.$route.params.id)
         .then(async response => {
           this.loading = false;
           if (response.status === 200) {
-            const userData = await response.json();
-            this.users = userData;
+            const lawData = await response.json();
+            this.law = lawData;
           }
         })
         .catch(response => {
