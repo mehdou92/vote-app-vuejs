@@ -2,7 +2,7 @@
   <div>
     <h1>Create user</h1>
     <Formik
-      :inital-values="{
+      :initial-values="{
             first_name: '',
             last_name: '',
             email: '',
