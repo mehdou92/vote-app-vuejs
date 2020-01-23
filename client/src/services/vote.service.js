@@ -25,15 +25,29 @@ export async function getLaws() {
   return data;
 }
 
-export async function getLaw(lawId){
+export async function getLaw(lawId) {
+  let response = await fetch(`http://localhost:3000/votes/${lawId}`, {
+    method: "get",
+    headers: {
+      Authorization: "Bearer " + store.state.token,
+      "Content-type": "application/json"
+    }
+  });
+  let data = await response;
+  return data;
+}
 
-    let response = await fetch(`http://localhost:3000/votes/${lawId}`, {
-        method: "get",
-        headers: {
-            "Authorization" : 'Bearer ' + store.state.token,
-            "Content-type": "application/json"
-        }
-    });
-    let data = await response;
-    return data;
+export async function updateLaw(lawId, body) {
+  let response = await fetch(`http://localhost:3000/votes/${lawId}`, {
+    method: "put",
+    body: JSON.stringify(body),
+    header: {
+      headers: {
+        Authorization: "Bearer " + store.state.token,
+        "Content-type": "application/json"
+      }
+    }
+  });
+  let data = await response;
+  return data;
 }
