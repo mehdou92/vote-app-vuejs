@@ -77,7 +77,6 @@ export default {
 <style lang="css">
 
 .login-container {
-  background-color: #A7ABDD;
   width: 100%;
   height: 100%;
 }
