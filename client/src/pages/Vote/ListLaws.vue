@@ -54,9 +54,10 @@ export default {
         .then(async response => {
           if (response.status === 200) {
             console.log('voted');
-            this.$router.push(`/laws/${uuid}`);
+            this.$router.push(`/law/${uuid}`);
           } else if(response.status === 401) {
-            this.error = 'The proposal was  already voted';
+            const responseError = await response.json();
+            this.error = responseError.error;
           }
         })
         .catch(response => {
