@@ -22,9 +22,12 @@
       </router-link>
     </div>
     <div>
-      <router-link to="/login" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
-      Login
+      <!-- <router-link v-if="store.state.token" to="/login" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+      Logout
       </router-link>
+      <router-link v-if="!store.state.token" to="/login" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+      Login
+      </router-link> -->
     </div>
   </div>
 </nav>
@@ -34,6 +37,7 @@
 
 <script>
 import Home from './components/Home.vue'
+import store from "@/store/user";
 export default {
   name: 'app',
   components: {
