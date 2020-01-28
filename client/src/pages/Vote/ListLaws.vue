@@ -6,16 +6,25 @@
 
       <div v-if="error" class="error">{{ error }}</div>
 
-      <div v-if="laws">
-        <div v-for="law in laws" :key="law.uuid" class="content">
-          <h2>{{ law.uuid }}</h2>
-          <p>{{ law.title }}</p>
-          <p>{{ law.description }}</p>
-          <p>{{ law.start_date }}</p>
-          <p>{{ law.end_date }}</p>
-          <button v-on:click="vote(law.uuid)">Vote !</button>
+      <div v-if="laws" class="flex-wrap flex">
+        <div v-for="law in laws" :key="law.uuid" class="content flex-1 self-auto">
+          <div class="rounded overflow-hidden shadow-lg bg-teal-200">
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2"> {{ law.title }}</div>
+              <p class="text-gray-700 text-base">{{ law.description }}</p>
+            </div>
+            <div class="px-6 py-4">
+              <span class="vote-btn bg-white inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+              v-on:click="vote(law.uuid)">
+                Vote !
+              </span>
+            </div>
+          </div>
         </div>
       </div>
+
+      
+
   </div>
 </template>
 
@@ -76,5 +85,16 @@ export default {
 </script>
 
 <style>
+
+  .vote-btn {
+    cursor: pointer;
+  }
+
+  .content {
+    margin: 30px;
+    width: 30%;
+    min-width: 30%;
+  }
+
 
 </style>

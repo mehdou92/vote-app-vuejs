@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Add New law</h1>
+  <div class="add-law-container">
+    <h1 class="law-title">Add New law</h1>
     <Formik
       :initial-values="{
             title: '',
@@ -11,39 +11,50 @@
       @onSubmit="handleSubmit"
     >
       <form class="centered">
-        <div class="half">
-          <Field
-            class="input stack"
-            type="text"
-            name="title"
-            placeholder="title of the law"
-            tag="input"
-          />
-          <Field
-            class="input stack"
-            type="text"
-            name="description"
-            placeholder="description of the law"
-            tag="input"
-          />
-          2004-01-01T00:00:00.000Z
-          <Field
-            class="input stack"
-            type="text"
-            name="start_date"
-            placeholder="start date of the law"
-            tag="input"
-          />
-          2004-02-01T00:00:00.000Z
-          <Field
-            class="input stack"
-            type="text"
-            name="end_date"
-            placeholder="end date of the law"
-            tag="input"
-          />
-          <button class="button stack" type="submit">Create new law</button>
-        </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+          Title
+        </label>
+        <Field class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+        type="text" name="title" placeholder="Title of the law" tag="input" />
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+          Description
+        </label>
+        <Field class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+        type="text"
+              name="description"
+              placeholder="Description of the law"
+              tag="input" />
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="start_date">
+          Start date
+        </label>
+        <Field class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+        type="text"
+              name="start_date"
+              placeholder="2004-01-01T00:00:00.000Z"
+              tag="input" />
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="end_date">
+          End date
+        </label>
+        <Field class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+        type="text"
+              name="end_date"
+              placeholder="2004-01-01T00:00:00.000Z"
+              tag="input" />
+      </div>
+      <div class="flex items-center justify-between">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+          Create new law
+        </button>
+      </div>
+
       </form>
     </Formik>
   </div>
@@ -72,6 +83,7 @@ export default {
       }).then(async response => {
         if (response.status === 200) {
           console.log("law created");
+          this.$router.push('/laws');
         }
       }).catch(async response => {
           console.error('error create law', await response.json());
@@ -82,4 +94,13 @@ export default {
 </script>
 
 <style>
+
+  .law-title {
+    margin: 40px;
+  }
+
+  .add-law-container {
+    margin: 0 50px 0 50px;
+  }
+
 </style>

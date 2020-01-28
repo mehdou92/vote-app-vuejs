@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app bg-gray-200">
     <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
     <span class="font-semibold text-xl tracking-tight">Laws-voting</span>
@@ -13,6 +13,12 @@
     <div class="text-sm lg:flex-grow">
       <router-link to="/" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
         Home
+      </router-link>
+      <router-link to="/laws" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        Laws
+      </router-link>
+      <router-link to="/create-law" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        New Laws
       </router-link>
     </div>
     <div>
@@ -46,6 +52,5 @@ export default {
   max-width: 100%;
   min-width: 100%;
   max-width: 100%;
-  background-color: #A7ABDD;
 }
 </style>
