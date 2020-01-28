@@ -8,6 +8,7 @@ import User from "../pages/User/GetUser";
 import CreateLaw from "../pages/Vote/AddLaw";
 import ListLaws from "../pages/Vote/ListLaws";
 import Law from "../pages/Vote/GetLaw";
+import Error from "../pages/error/404";
 
 const router = new VueRouter({
     mode: "history",
@@ -51,6 +52,11 @@ const router = new VueRouter({
             path: '/law/:id',
             name: 'Get law',
             component: Law
+        },
+        {
+            path: '*',
+            name: '404 error',
+            component: Error
         }
     ]
 });
