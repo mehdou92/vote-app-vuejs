@@ -18,14 +18,12 @@
             <th class="bg-teal-400 text-white px-4 py-2 ">UUID</th>
           </tr>
         </thead>
-        <tbody>
-          <div v-for="user in users" :key="user.uuid" class="content">
-              <tr>
-                <td class="bg-grey-600 border px-4 py-2 ">{{ user.first_name }}</td>
-                <td class="bg-grey-600 border px-4 py-2 ">{{ user.last_name }}</td>
-                <td class="bg-grey-600 border px-4 py-2 ">{{ user.uuid }}</td>
-              </tr>
-          </div>
+        <tbody v-for="user in users" :key="user.uuid" class="content">
+            <tr>
+              <td class="bg-grey-600 border px-4 py-2 ">{{ user.first_name }}</td>
+              <td class="bg-grey-600 border px-4 py-2 ">{{ user.last_name }}</td>
+              <td class="bg-grey-600 border px-4 py-2 ">{{ user.uuid }}</td>
+            </tr>
         </tbody>
       </table>
     </div>
