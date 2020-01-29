@@ -9,6 +9,7 @@ import CreateLaw from "../pages/Vote/AddLaw";
 import ListLaws from "../pages/Vote/ListLaws";
 import Law from "../pages/Vote/GetLaw";
 import Error from "../pages/error/404";
+import store from "@/store/user";
 
 const router = new VueRouter({
     mode: "history",
@@ -26,17 +27,20 @@ const router = new VueRouter({
         {
             path: '/create-user',
             name: 'Create user',
-            component: CreateUser
+            component: CreateUser,
+            meta: { requiresAuth: true }
         },
         {
             path:'/users',
             name: 'List of users',
-            component: ListUsers
+            component: ListUsers,
+            meta: { requiresAuth: true }
         },
         {
             path: '/user/:id',
             name: 'Get user',
-            component: User
+            component: User,
+            meta: { requiresAuth: true }
         },
         {
             path: '/create-law',
@@ -60,5 +64,22 @@ const router = new VueRouter({
         }
     ]
 });
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+      // cette route demande une autorisation, vérifions si l'utilisateur est logué.
+      // sinon, redirigeons le sur la page de login.
+      if (store.getters.adminPermission.access_level != 1) {
+        next({
+          path: '/*',
+          query: { redirect: to.fullPath }
+        })
+      } else {
+        next()
+      }
+    } else {
+      next()
+    }
+  })
 
 export default router;
