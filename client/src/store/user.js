@@ -14,9 +14,20 @@ export default new Vuex.Store({
   state: {
     token: null
   },
+  getters: {
+    getToken: state => {
+      return state.token
+    },
+    isLogged: state => {
+      return state.token ? true : false
+    },
+  },
   mutations: {
     authenticate(state, payload) {
       state.token = payload.jwt;
+    },
+    logout(state) {
+      state.token = null;
     }
   }
 });

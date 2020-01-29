@@ -22,12 +22,12 @@
       </router-link>
     </div>
     <div>
-      <!-- <router-link v-if="store.state.token" to="/login" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+      <button v-if="isLogged" v-on:click="logout()" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
       Logout
-      </router-link>
-      <router-link v-if="!store.state.token" to="/login" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+      </button>
+      <router-link v-if="!isLogged" to="/login" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
       Login
-      </router-link> -->
+      </router-link>
     </div>
   </div>
 </nav>
@@ -43,6 +43,20 @@ export default {
   components: {
     Home
   },
+  computed: {
+    isLogged () {
+      return store.getters.isLogged
+    }
+  },
+  methods: {
+    logout() {
+      store.commit('logout');
+      localStorage.removeItem('token');
+      console.log('disconnected');
+      this.$router.push('/login');
+    }
+  }
+  
 }
 </script>
 
