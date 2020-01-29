@@ -20,7 +20,7 @@
       <router-link to="/create-law" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
         New Law
       </router-link>
-      <router-link v-if="adminPermission = 1" to="/users" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+      <router-link v-if="adminPermission = 1 && isLogged" to="/users" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
         User
       </router-link>
     </div>
@@ -51,7 +51,6 @@ export default {
       return store.getters.isLogged
     },
     adminPermission (){
-        //console.log(store.getters.adminPermission.access_level);
         return store.getters.adminPermission.access_level
     }
   },

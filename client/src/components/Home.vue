@@ -31,7 +31,7 @@
                                             </router-link>
                                         </button>
                                         <button v-if="isLogged" class="bg-teal-600 hover:bg-teil-700 text-white font-bold py-2 px-4 rounded-full">
-                                            <router-link to="/login" class="inline-block text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0">
+                                            <router-link to="/laws" class="inline-block text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0">
                                                 Allez donc voter ! &rarr;
                                             </router-link>
                                         </button>
