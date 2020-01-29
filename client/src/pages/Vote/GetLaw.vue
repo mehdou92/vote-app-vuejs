@@ -46,7 +46,7 @@
           Number of votes
         </h2>
         <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-        >{{ law.uuid_votes.length }}</p>
+        >{{ law.uuid_votes ? law.uuid_votes.length : '0' }}</p>
       </div>
       <div v-if="law" class="flex items-center justify-between">
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
