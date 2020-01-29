@@ -24,6 +24,9 @@
               v-on:click="vote(law.uuid)">
                 Vote !
               </span>
+              <router-link :to="'/law/' + law.uuid" class="vote-btn bg-white inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                More
+              </router-link>
             </div>
           </div>
         </div>
