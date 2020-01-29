@@ -67,8 +67,6 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-      // cette route demande une autorisation, vérifions si l'utilisateur est logué.
-      // sinon, redirigeons le sur la page de login.
       if (store.getters.adminPermission.access_level != 1) {
         next({
           path: '/*',
