@@ -24,6 +24,7 @@
             <th class="bg-teal-400 text-white px-4 py-2">First name</th>
             <th class="bg-teal-400 text-white px-4 py-2">Last name</th>
             <th class="bg-teal-400 text-white px-4 py-2">UUID</th>
+            <th class="bg-teal-400 text-white px-4 py-2">Status</th>
             <th class="bg-teal-400 text-white px-4 py-2">Action</th>
           </tr>
         </thead>
@@ -31,6 +32,7 @@
           <tr>
             <td class="bg-grey-600 border px-4 py-2">{{ user.first_name }}</td>
             <td class="bg-grey-600 border px-4 py-2">{{ user.last_name }}</td>
+            <td class="bg-grey-600 border px-4 py-2">{{ (user.access_level === 1) ? "Admin" : "User" }}</td>
             <td class="bg-grey-600 border px-4 py-2">{{ user.uuid }}</td>
             <td class="bg-grey-600 border px-4 py-2">
               <span
