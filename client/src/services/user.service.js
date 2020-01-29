@@ -52,3 +52,16 @@ export async function getUser(userId){
   let data = await response;
   return data;
 }
+
+export async function deleteUser(uuid){
+  
+  let response = await fetch(`http://localhost:3000/users/${uuid}`, {
+    method: "delete",
+    headers: {
+      "Authorization" : 'Bearer ' + store.state.token,
+      "Content-type": "application/json"
+    }
+  });
+  let data = await response;
+  return data;
+}

@@ -2,28 +2,43 @@
   <div class="users">
     <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md">
       <div class="flex">
-          <svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
-          <p class="font-bold">List of all user</p>
+        <svg
+          class="fill-current h-6 w-6 text-teal-500 mr-4"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"
+          />
+        </svg>
+        <p class="font-bold">List of all user</p>
       </div>
     </div>
     <div v-if="loading" class="loading">Loading...</div>
 
     <div v-if="error" class="error">{{ error }}</div>
-    <div class="p-6" v-if="users">
+    <div class="p-6" v-if="users" :key="componentKey">
       <table class="table">
         <thead>
           <tr>
-            <th class="bg-teal-400 text-white px-4 py-2 ">First name</th>
-            <th class="bg-teal-400 text-white px-4 py-2 ">Last name</th>
-            <th class="bg-teal-400 text-white px-4 py-2 ">UUID</th>
+            <th class="bg-teal-400 text-white px-4 py-2">First name</th>
+            <th class="bg-teal-400 text-white px-4 py-2">Last name</th>
+            <th class="bg-teal-400 text-white px-4 py-2">UUID</th>
+            <th class="bg-teal-400 text-white px-4 py-2">Action</th>
           </tr>
         </thead>
         <tbody v-for="user in users" :key="user.uuid" class="content">
-            <tr>
-              <td class="bg-grey-600 border px-4 py-2 ">{{ user.first_name }}</td>
-              <td class="bg-grey-600 border px-4 py-2 ">{{ user.last_name }}</td>
-              <td class="bg-grey-600 border px-4 py-2 ">{{ user.uuid }}</td>
-            </tr>
+          <tr>
+            <td class="bg-grey-600 border px-4 py-2">{{ user.first_name }}</td>
+            <td class="bg-grey-600 border px-4 py-2">{{ user.last_name }}</td>
+            <td class="bg-grey-600 border px-4 py-2">{{ user.uuid }}</td>
+            <td class="bg-grey-600 border px-4 py-2">
+              <span
+                v-on:click="deleteU(user.uuid); forceRerender();"
+                class="vote-btn bg-white inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+              >Delete User</span>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -31,7 +46,7 @@
 </template>
 
 <script>
-import { getUsers } from "@/services/user.service";
+import { getUsers, deleteUser } from "@/services/user.service";
 
 export default {
   name: "ListUser",
@@ -39,7 +54,8 @@ export default {
     return {
       loading: false,
       users: null,
-      error: null
+      error: null,
+      componentKey: 0
     };
   },
   created() {
@@ -50,6 +66,20 @@ export default {
     $route: "fetchData"
   },
   methods: {
+    forceRerender() {
+      this.componentKey += 1;
+    },
+
+    deleteU: function(uuid) {
+      deleteUser(uuid).then(async response => {
+        if (response.status === 200) {
+          console.log("deleted user");
+        } else {
+          console.error("error delete user");
+        }
+      });
+    },
+
     fetchData() {
       this.error = this.users = null;
       this.loading = true;
