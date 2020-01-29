@@ -4,7 +4,9 @@
 
     <div v-if="loading" class="loading">Loading...</div>
 
-    <div v-if="error" class="error">{{ error }}</div>
+    <div v-if="error" class="error">
+      <Error :error="error"></Error>
+    </div>
 
       <!-- <div v-if="law" class="content">
         <h2>{{ law.uuid }}</h2>
@@ -60,6 +62,7 @@
 
 <script>
 import { getLaw, updateLaw } from "@/services/vote.service";
+import Error from "@/pages/error/Error.vue";
 
 export default {
 
@@ -77,6 +80,9 @@ export default {
   watch: {
     // call again the method if the route changes
     $route: "fetchData"
+  },
+  components: {
+    Error
   },
   methods: {
     fetchData() {

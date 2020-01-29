@@ -10,7 +10,9 @@
     </div>
       <div v-if="loading" class="loading">Loading...</div>
 
-      <div v-if="error" class="error">{{ error }}</div>
+      <div v-if="error" class="error">
+        <Error :error="error"></Error>
+        </div>
 
       <div v-if="laws" class="flex-wrap flex">
         <div v-for="law in laws" :key="law.uuid" class="content flex-1 self-auto">
@@ -36,6 +38,7 @@
 
 <script>
 import { getLaws, updateLaw } from "@/services/vote.service";
+import Error from '@/pages/error/Error.vue';
 
 export default {
   name:"ListLaws",
@@ -53,6 +56,9 @@ export default {
         // call again the method if the route changes
     $route: "fetchData"
   },
+  components: {
+    Error
+  },
   methods: {
     vote : function (uuid){
       this.error = null;
@@ -60,9 +66,10 @@ export default {
         .then(async response => {
           if (response.status === 200) {
             console.log('voted');
-            this.$router.push(`/law/${uuid}`);
+            this.$router.push(`/laws`);
           } else if(response.status === 401) {
             const responseError = await response.json();
+            console.log(responseError);
             this.error = responseError.error;
           }
         })
