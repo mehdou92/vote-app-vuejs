@@ -67,7 +67,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-      if (store.getters.adminPermission.access_level != 2) {
+      if (store.getters.adminPermission.access_level != 1) {
         next({
           path: '/*',
           query: { redirect: to.fullPath }
