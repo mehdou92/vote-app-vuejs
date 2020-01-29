@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersist from 'vuex-persist';
+import jwt_decode from 'jwt-decode';
 
 Vue.use(Vuex);
 
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     isLogged: state => {
       return state.token ? true : false
     },
+    adminPermission: state => {
+      return state.accessAdmin = jwt_decode(state.token); 
+    }
   },
   mutations: {
     authenticate(state, payload) {

@@ -25,9 +25,14 @@
                                         <li>L'exercice Formik4Vue doit être inclus dans le projet et utiliser à chaque fois qu'il est question de formulaire.</li>
                                     </ul>
                                     <p class="mt-6">
-                                        <button class="bg-teal-600 hover:bg-teil-700 text-white font-bold py-2 px-4 rounded-full">
+                                        <button v-if="!isLogged" class="bg-teal-600 hover:bg-teil-700 text-white font-bold py-2 px-4 rounded-full">
                                             <router-link to="/login" class="inline-block text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0">
                                                 Connectez-vous pour voir le projet &rarr;
+                                            </router-link>
+                                        </button>
+                                        <button v-if="isLogged" class="bg-teal-600 hover:bg-teil-700 text-white font-bold py-2 px-4 rounded-full">
+                                            <router-link to="/laws" class="inline-block text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0">
+                                                Allez donc voter ! &rarr;
                                             </router-link>
                                         </button>
                                     </p>
@@ -38,12 +43,19 @@
                 </div>
             </div>
         </div>
-        <h1>HomePage component</h1>
-        
     </div>
 </template>
 
 <script>
+import store from "@/store/user";
+export default {
+  name: 'home',
+  computed: {
+    isLogged () {
+      return store.getters.isLogged
+    }
+  }
+};
 </script>
 
 <style scoped>

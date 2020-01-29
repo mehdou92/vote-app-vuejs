@@ -17,8 +17,10 @@
     <div v-if="loading" class="loading">Loading...</div>
 
     <div v-if="error" class="error">{{ error }}</div>
-    <div class="p-6" v-if="users" :key="componentKey">
-      <table class="table">
+    
+    <div class="p-6 w-flex -mx-2" v-if="users" :key="componentKey">
+      <table class="table" w-full>
+
         <thead>
           <tr>
             <th class="bg-teal-400 text-white px-4 py-2">First name</th>
@@ -44,6 +46,13 @@
         </tbody>
       </table>
     </div>
+    <div class="flex items-center p-4 justify-between">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+            <router-link to="/create-user" class="inline-block text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0">
+                Create new user
+            </router-link>
+          </button>
+        </div>
   </div>
 </template>
 
