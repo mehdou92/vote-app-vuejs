@@ -8,7 +8,7 @@
             email: '',
             password: '',
             date_of_birth: '',
-            access_level: 2
+            access_level: false,
         }"
       @onSubmit="handleSubmit"
     >
