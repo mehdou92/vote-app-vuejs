@@ -1,18 +1,31 @@
 <template>
   <div class="users">
-    <h1>List of all user</h1>
-
+    <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md">
+      <div class="flex">
+          <svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+          <p class="font-bold">List of all user</p>
+      </div>
+    </div>
     <div v-if="loading" class="loading">Loading...</div>
 
     <div v-if="error" class="error">{{ error }}</div>
-
-    <div v-if="users">
-      <div v-for="user in users" :key="user.uuid" class="content">
-        <h2>{{ user.uuid }}</h2>
-        <p>{{ user.first_name }}</p>
-        <p>{{ user.last_name }}</p>
-        <p>{{ user.accessLevel }}</p>
-      </div>
+    <div class="p-6" v-if="users">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="bg-teal-400 text-white px-4 py-2 ">First name</th>
+            <th class="bg-teal-400 text-white px-4 py-2 ">Last name</th>
+            <th class="bg-teal-400 text-white px-4 py-2 ">UUID</th>
+          </tr>
+        </thead>
+        <tbody v-for="user in users" :key="user.uuid" class="content">
+            <tr>
+              <td class="bg-grey-600 border px-4 py-2 ">{{ user.first_name }}</td>
+              <td class="bg-grey-600 border px-4 py-2 ">{{ user.last_name }}</td>
+              <td class="bg-grey-600 border px-4 py-2 ">{{ user.uuid }}</td>
+            </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
