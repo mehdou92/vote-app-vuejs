@@ -16,7 +16,9 @@
     </div>
     <div v-if="loading" class="loading">Loading...</div>
 
-    <div v-if="error" class="error">{{ error }}</div>
+    <div v-if="error" class="error">
+      <Error :error="error"></Error>
+    </div>
     
     <div class="p-6 w-flex -mx-2" v-if="users" :key="componentKey">
       <table class="table" w-full>
@@ -58,6 +60,7 @@
 
 <script>
 import { getUsers, deleteUser } from "@/services/user.service";
+import Error from "@/pages/error/Error.vue";
 
 export default {
   name: "ListUser",
@@ -75,6 +78,9 @@ export default {
   watch: {
     // call again the method if the route changes
     $route: "fetchData"
+  },
+  components: {
+    Error
   },
   methods: {
     forceRerender() {
