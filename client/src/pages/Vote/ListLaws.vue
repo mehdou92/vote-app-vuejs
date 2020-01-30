@@ -29,6 +29,9 @@
               <router-link :to="'/law/' + law.uuid" class="vote-btn bg-white inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
                 More
               </router-link>
+              <span class="vote-btn bg-white inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+              >{{ law.uuid_votes ? law.uuid_votes.length : '0' }} votes
+              </span>
             </div>
           </div>
         </div>
@@ -66,7 +69,6 @@ export default {
         .then(async response => {
           if (response.status === 200) {
             console.log('voted');
-            this.$router.push(`/laws`);
           } else if(response.status === 401) {
             const responseError = await response.json();
             console.log(responseError);
@@ -74,7 +76,7 @@ export default {
           }
         })
         .catch(response => {
-          console.error('error vote for the law :', response);
+          console.log('Hello Karl');
         })
     },
 
