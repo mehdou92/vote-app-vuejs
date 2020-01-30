@@ -14,10 +14,10 @@
       <router-link to="/" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
         Home
       </router-link>
-      <router-link to="/laws" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+      <router-link v-if="isLogged"  to="/laws" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
         Laws
       </router-link>
-      <router-link to="/create-law" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+      <router-link v-if="isLogged" to="/create-law" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
         New Law
       </router-link>
       <router-link v-if="isLogged && adminPermission ==1 " to="/users" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
